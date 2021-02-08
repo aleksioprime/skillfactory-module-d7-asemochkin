@@ -1,0 +1,110 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+header, aside, main, footer {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: rgba(57, 151, 228, 0.8);
+}
+
+footer p{
+    color: #dddddd;
+    padding: 5px 10px;
+    background-color: rgb(141, 141, 141);
+    border-radius: 5px;
+}
+
+.menu {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(57, 151, 228, 0.8);
+  border-radius: 10px;
+}
+
+.menu_item {
+  padding: 15px 30px;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.menu_item:hover {
+  background-color: #ff3f40;
+}
+
+.table-book {
+	width: 100%;
+	margin-bottom: 20px;
+	border: 1px solid #dddddd;
+	border-collapse: collapse; 
+}
+.table-book th {
+	font-weight: bold;
+	padding: 5px;
+	background: #efefef;
+	border: 1px solid #dddddd;
+}
+.table-book td {
+	border: 1px solid #dddddd;
+	padding: 5px;
+}
+
+.related-books {
+    list-style: none;
+    padding-left: 0;
+}
+
+.link-create {
+  margin: 30px 0;
+  padding: 10px;
+  background-color: rgb(17, 163, 24);
+  border-radius: 5px;
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.link-cancel {
+  margin: 5px;
+  padding: 5px 20px;
+  background-color: rgb(168, 168, 168);
+  border-radius: 5px;
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.header-account {
+  min-width: 200px;
+  border: 3px solid rgba(57, 151, 228, 0.8);
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  border-radius: 5px;
+}
+
+.header-account img { 
+  margin: 5px 10px 5px;
+  border-radius: 5px;
+}

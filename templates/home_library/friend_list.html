@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block extra_content %}
+{% load static %}
+<h2>Cписок друзей</h2>
+<table class="table-book">
+    <thead>
+        <tr>
+            <th scope="col">№</th>
+            <th scope="col">ФИО</th>
+            <th scope="col">Домашний адрес</th>
+            <th scope="col">Телефон</th>
+            <th scope="col">Какие книги должен</th>
+        </tr>
+    </thead>
+    {% for friend in friends %}
+    <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ friend.full_name }}</td>
+        <td>{{ friend.address }}</td>
+        <td>{{ friend.phone }}</td>
+        <td>
+            <ul class="related-books">
+                {% for book in friend.book_friend.all %}
+                <li > {{book.title}} </li>
+                {% endfor %}
+            </ul>
+        </td>
+        {% if username %}
+        <td><a href="{% url 'home_library:friend_edit' friend.pk %}">
+            <img src="{% static 'img/pencil.svg' %}" alt="" width="25px" height="auto">
+        </a></td>
+        <td><a href="{% url 'home_library:friend_delete' friend.pk %}">
+            <img src="{% static 'img/remove.svg' %}" alt="" width="25px" height="auto">
+        </a></td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+</table>
+{% if username %}
+<a class="link-create" href="{% url 'home_library:friend_add'%}">Добавить друга</a>
+{% endif %}
+{% endblock %}

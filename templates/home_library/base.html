@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Домашняя библиотека</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <div>
+                <h1><a href="{% url 'home_library:index' %}"> Домашняя библиотека</h1></a>
+            </div>
+            {% if show_login %}
+            <div class="header-account">
+                {% if username %}
+                {% if extra_data.avatar_url %}
+                <img src="{{ extra_data.avatar_url }}" alt="" width="50px" height="auto">
+                {% endif %}
+                <p>Привет, {{ username }}! <a href="/accounts/logout"> Выйти</a></p>
+                {% else %}
+                <p><a href="/accounts/signup/">Зарегистрироваться</a> или <a href="/accounts/login/">войти на
+                        сайт</a>!</p>
+                {% endif %}
+            </div>
+            {% endif %}
+
+
+        </header>
+        <aside>
+            <div class="menu">
+                <a class="menu_item" href="{% url 'home_library:index' %}">Список книг</a>
+                <a class="menu_item" href="{% url 'home_library:authors' %}">Список авторов</a>
+                <a class="menu_item" href="{% url 'home_library:publishers' %}">Список издательств</a>
+                <a class="menu_item" href="{% url 'home_library:friends' %}">Список друзей</a>
+            </div>
+        </aside>
+        <main>
+            {% block extra_content %}
+
+            {% endblock %}
+        </main>
+        <footer>
+            <p>&copy; Алексей С. - 2021 | SkillFactory | Домашнее задание - D6</p>
+            <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a
+                    href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+            <div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel
+                    perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+        </footer>
+    </div>
+</body>
+
+</html>

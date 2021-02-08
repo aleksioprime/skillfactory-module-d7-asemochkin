@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block extra_content %}
+{% load static %}
+<h2>Cписок издательств</h2>
+<table class="table-book">
+    <thead>
+        <tr>
+            <th scope="col">№</th>
+            <th scope="col">ФИО</th>
+            <th scope="col">Год рождения</th>
+            <th scope="col">Страна</th>
+            <th scope="col">Книги</th>
+        </tr>
+    </thead>
+    {% for publisher in publishers %}
+    <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ publisher.name }}</td>
+        <td>{{ publisher.address }}</td>
+        <td>{{ publisher.web }}</td>
+        <td>
+            <ul class="related-books">
+                {% for book in publisher.book_publisher.all %}
+                <li > {{book.title}} </li>
+                {% endfor %}
+            </ul>
+        </td>
+        {% if username %}
+        <td><a href="{% url 'home_library:publisher_edit' publisher.pk %}">
+            <img src="{% static 'img/pencil.svg' %}" alt="" width="25px" height="auto">
+        </a></td>
+        <td><a href="{% url 'home_library:publisher_delete' publisher.pk %}">
+            <img src="{% static 'img/remove.svg' %}" alt="" width="25px" height="auto">
+        </a></td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+</table>
+{% if username %}
+<a class="link-create" href="{% url 'home_library:publisher_add'%}">Добавить издательство</a>
+{% endif %}
+{% endblock %}

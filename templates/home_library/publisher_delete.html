@@ -1,0 +1,11 @@
+<!-- templates/publisher_delete.html -->
+{% extends 'base.html' %}
+
+{% block extra_content %}
+    <h1>Удаление издательства</h1>
+    <form action="" method="post">{% csrf_token %}
+      <p>Вы подтверждаете удаление "{{ publisher.name }}"?</p>
+      <input type="submit" value="Удалить" />
+    </form>
+
+{% endblock %}
