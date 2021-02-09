@@ -22,7 +22,9 @@
                 {% if extra_data.avatar_url %}
                 <img src="{{ extra_data.avatar_url }}" alt="" width="50px" height="auto">
                 {% endif %}
-                <p>Привет, {{ username }}! <a href="/accounts/logout"> Выйти</a></p>
+                <p>Привет, <a href="{% url 'home_library:user_edit' user.id %}">
+                        {{ username }}
+                    </a> ! <a href="/accounts/logout"> Выйти</a></p>
                 {% else %}
                 <p><a href="/accounts/signup/">Зарегистрироваться</a> или <a href="/accounts/login/">войти на
                         сайт</a>!</p>

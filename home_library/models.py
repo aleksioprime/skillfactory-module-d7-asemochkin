@@ -1,13 +1,7 @@
 from django.db import models
-from django.db.models.deletion import SET_NULL, SET_DEFAULT
+from django.db.models.deletion import SET_NULL
 from django.utils.translation import gettext as _
 from django.urls import reverse
-from django.contrib.auth.models import User  
-  
-# Модель таблицы пользователей
-class UserProfile(models.Model):  
-    age = models.IntegerField()  
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
 
 # Модель таблицы базы данных авторов книг
 class Author(models.Model):

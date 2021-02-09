@@ -19,3 +19,4 @@ class FriendAdmin(admin.ModelAdmin):
 @admin.register(Publisher)
 class PublisherAdmin(admin.ModelAdmin):
     pass
+

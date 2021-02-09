@@ -3,7 +3,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from .views import BookList, AuthorList, PublisherList, FriendList, AuthorEdit, AuthorCreate, AuthorDelete, \
     PublisherCreate, PublisherEdit, PublisherDelete, FriendEdit, FriendCreate, FriendDelete, BookDetail, \
-        BookEdit, BookCreate, BookDelete
+        BookEdit, BookCreate, BookDelete, UserEdit
 app_name = 'home_library'
 
 urlpatterns = [
@@ -25,6 +25,7 @@ urlpatterns = [
     path('friend/<int:pk>/edit/', FriendEdit.as_view(), name='friend_edit'),
     path('friend/add/', FriendCreate.as_view(), name='friend_add'),
     path('friend/<int:pk>/delete/', FriendDelete.as_view(), name='friend_delete'),
+    path('profile/<slug>', UserEdit.as_view(), name='user_edit'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
-from django.views.generic import ListView, UpdateView, CreateView, DeleteView, DetailView, FormView
+from django.views.generic import ListView, UpdateView, CreateView, DeleteView, DetailView
 from home_library.models import Book, Author, Publisher, Friend
+from django.contrib.auth.models import User  
 from django.urls import reverse_lazy
 from allauth.socialaccount.models import SocialAccount
 
@@ -14,6 +15,13 @@ class authView():
             if SocialAccount.objects.filter(user=self.request.user).exists():
                 context['extra_data'] = SocialAccount.objects.get(user=self.request.user).extra_data
         return context 
+
+class UserEdit(authView, UpdateView):
+    model = User
+    fields = ['first_name', 'last_name', 'email']
+    template_name = 'user_edit.html'
+    slug_field = 'id'
+    slug_url_kwarg = 'slug'
 
 class BookList(authView, ListView):
     model = Book
